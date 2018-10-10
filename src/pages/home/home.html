@@ -8,8 +8,8 @@
   <ion-list>
 
     
-      <ion-input type="text" placeholder="Text for translation..."></ion-input>
-      <button ion-button full> Translate </button>
+      <ion-input #input type="text" placeholder="Text for translation..."></ion-input>
+      <button (click)="btnTranslateClicked(input.value)"ion-button full> Translate </button>
 
       <ion-card>
 
@@ -18,7 +18,12 @@
         </ion-card-header>
       
         <ion-card-content>
-          <!-- TODO: Add card content here! -->
+          
+
+          {{ userInput }}
+          <!-- arrow is hidden until .... -->
+          <ion-icon *ngIf="userInput" name="arrow-round-forward"></ion-icon>
+          <!-- TODO: Add translation result here -->
         </ion-card-content>
       
       </ion-card>

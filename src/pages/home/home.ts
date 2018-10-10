@@ -7,8 +7,16 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
+  private userInput:string;
+
   constructor(public navCtrl: NavController) {
 
+  }
+//click event handler
+  public btnTranslateClicked(userInput:string):void{
+    console.log(userInput);
+
+    this.userInput = userInput
   }
 
 }
