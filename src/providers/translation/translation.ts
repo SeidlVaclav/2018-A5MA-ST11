@@ -11,14 +11,14 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class TranslationProvider {
 
+
   constructor(public http: HttpClient) {
     console.log('Hello TranslationProvider Provider');
   }
 
   public getTranslationResult(userInput:string):Observable<any>{
-    let url =  'https://api.mymemory.translated.net/get?q='+userInput+'!&langpair=cz|en';
-    return this.http.get(url)
-
+    let url = 'https://api.mymemory.translated.net/get?q='+userInput+'&langpair=en|cs';
+    return this.http.get(url);
   }
 
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import {TranslationProvider} from '../../providers/translation/translation';
+import { TranslationProvider } from '../../providers/translation/translation';
+import { HistoryProvider } from '../../providers/history/history';
 
 @Component({
   selector: 'page-home',
@@ -13,21 +14,26 @@ export class HomePage {
 
   constructor(
     public navCtrl: NavController,
-    private translationProvider: TranslationProvider
+    private translationProvider: TranslationProvider,
+    private historyProvider: HistoryProvider
   ) {
 
   }
-//click event handler
-  public btnTranslateClicked(userInput:string):void{
-    console.log(userInput);
 
-    this.userInput = userInput
+  // click event handler
+  public btnTranslateClicked(userInput:string):void {
+    console.log(userInput);
+    
+    this.userInput = userInput;
     this.translationProvider.getTranslationResult(userInput).subscribe(
       (response) => {
         // display translated text on UI
         console.log(response);
-        this.result = '';
-            }
+        
+        this.result = response.responseData.translatedText;
+
+        this.historyProvider.saveToHistory(userInput, this.result);
+      }
     );
   }
 

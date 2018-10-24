@@ -1,6 +1,7 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { IonicStorageModule } from '@ionic/storage';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
@@ -12,7 +13,8 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { TranslationProvider } from '../providers/translation/translation';
-import { HisotryPage } from '../pages/hisotry/hisotry';
+import { HistoryPage } from '../pages/history/history';
+import { HistoryProvider } from '../providers/history/history';
 
 @NgModule({
   declarations: [
@@ -21,12 +23,13 @@ import { HisotryPage } from '../pages/hisotry/hisotry';
     ContactPage,
     HomePage,
     TabsPage,
-    HisotryPage
+    HistoryPage
   ],
   imports: [
-    HttpClientModule,
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    HttpClientModule,
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -35,13 +38,14 @@ import { HisotryPage } from '../pages/hisotry/hisotry';
     ContactPage,
     HomePage,
     TabsPage,
-    HisotryPage
+    HistoryPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    TranslationProvider
+    TranslationProvider,
+    HistoryProvider
   ]
 })
 export class AppModule {}
