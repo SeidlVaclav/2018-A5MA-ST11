@@ -12,6 +12,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { TranslationProvider } from '../providers/translation/translation';
+import { HisotryPage } from '../pages/hisotry/hisotry';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { TranslationProvider } from '../providers/translation/translation';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    HisotryPage
   ],
   imports: [
     HttpClientModule,
@@ -32,7 +34,8 @@ import { TranslationProvider } from '../providers/translation/translation';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    HisotryPage
   ],
   providers: [
     StatusBar,
